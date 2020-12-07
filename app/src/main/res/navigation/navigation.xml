@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/title">
+
+    <fragment
+        android:id="@+id/title"
+        android:name="project.st991493546.baran.Title"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_title_to_cardio"
+            app:destination="@id/cardio" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardio"
+        android:name="project.st991493546.baran.Cardio"
+        android:label="fragment_exercisepage"
+        tools:layout="@layout/fragment_cardio" />
+</navigation>
