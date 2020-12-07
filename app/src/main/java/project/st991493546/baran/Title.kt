@@ -27,7 +27,7 @@ class Title : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
             R.layout.fragment_title, container, false)
 
-        binding.btnOpen.setOnClickListener { view: View ->
+        binding.btnOpenCardio.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_title_to_cardio)
         }
         return binding.root

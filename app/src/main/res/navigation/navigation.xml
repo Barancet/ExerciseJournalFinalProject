@@ -16,7 +16,17 @@
     </fragment>
     <fragment
         android:id="@+id/cardio"
-        android:name="project.st991493546.baran.Cardio"
+        android:name="project.st991493546.baran.cardio.Cardio"
         android:label="fragment_exercisepage"
-        tools:layout="@layout/fragment_cardio" />
+        tools:layout="@layout/fragment_cardio" >
+        <action
+            android:id="@+id/action_cardio_to_cardioAdd"
+            app:destination="@id/cardioAdd"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardioAdd"
+        android:name="project.st991493546.baran.cardio.CardioAdd"
+        android:label="fragment_cardio_add"
+        tools:layout="@layout/fragment_cardio_add" />
 </navigation>

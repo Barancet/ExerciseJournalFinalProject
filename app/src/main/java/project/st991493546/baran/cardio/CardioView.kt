@@ -1,4 +1,4 @@
-package project.st991493546.baran
+package project.st991493546.baran.cardio
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cardioitems.view.*
+import project.st991493546.baran.R
 
 import project.st991493546.baran.database.CardioListItems
 
