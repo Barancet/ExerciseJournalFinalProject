@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import project.st991493546.baran.database.CardioListItems
 
@@ -32,12 +34,15 @@ class Cardio : Fragment() {
     private fun generateList(size : Int): List<CardioListItems> {
         val list = ArrayList<CardioListItems>()
         val item = CardioListItems("Running", "12/05/2020","10 mins", "2km")
-        val item2 = CardioListItems("biking", "12/05/2020","20 mins", "5km")
+        val item2 = CardioListItems("Biking", "12/05/2020","20 mins", "5km")
+        val item3 = CardioListItems("Swimming", "12/06/2020","33 mins", "1km")
         list += item
         list += item2
+        list += item3
 
         return list
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
