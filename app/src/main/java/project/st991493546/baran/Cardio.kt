@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import project.st991493546.baran.database.CardioListItems
 
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_cardio.*
 
 
 class Cardio : Fragment() {
@@ -40,6 +41,18 @@ class Cardio : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cardio, container, false)
+    }
+
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        val ourList = generateList(1)
+        recycler_view.apply {
+            // set a LinearLayoutManager to handle Android
+            // RecyclerView behavior
+            layoutManager = LinearLayoutManager(activity)
+            // set the custom adapter to the RecyclerView
+            adapter = CardioView(ourList)
+        }
     }
 
 

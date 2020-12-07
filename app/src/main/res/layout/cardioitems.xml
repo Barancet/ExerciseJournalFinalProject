@@ -7,7 +7,7 @@
     android:elevation="52dp"
 
     app:cardCornerRadius="15dp"
-    app:cardElevation="100dp"
+    app:cardElevation="30dp"
     app:cardMaxElevation="52dp">
 
     <RelativeLayout
