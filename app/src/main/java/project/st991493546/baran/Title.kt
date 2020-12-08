@@ -12,11 +12,9 @@ import project.st991493546.baran.databinding.FragmentTitleBinding
 class Title : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
+
     }
 
     override fun onCreateView(
@@ -24,12 +22,19 @@ class Title : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        (activity as MainActivity).supportActionBar?.title = "Exercise Journal"
+
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
             R.layout.fragment_title, container, false)
 
         binding.btnOpenCardio.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_title_to_cardio)
         }
+
+        binding.btnOpenWeights.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_title_to_weight)
+        }
+
         return binding.root
     }
 }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_title_to_cardio"
             app:destination="@id/cardio" />
+        <action
+            android:id="@+id/action_title_to_weight"
+            app:destination="@id/weight" />
     </fragment>
     <fragment
         android:id="@+id/cardio"
@@ -29,4 +32,18 @@
         android:name="project.st991493546.baran.cardio.CardioAdd"
         android:label="fragment_cardio_add"
         tools:layout="@layout/fragment_cardio_add" />
+    <fragment
+        android:id="@+id/weight"
+        android:name="project.st991493546.baran.weight.Weight"
+        tools:layout="@layout/fragment_weight"
+        android:label="Weight" >
+        <action
+            android:id="@+id/action_weight_to_weightAdd"
+            app:destination="@id/weightAdd" />
+    </fragment>
+    <fragment
+        android:id="@+id/weightAdd"
+        android:name="project.st991493546.baran.weight.WeightAdd"
+        android:label="fragment_weight_add"
+        tools:layout="@layout/fragment_weight_add" />
 </navigation>

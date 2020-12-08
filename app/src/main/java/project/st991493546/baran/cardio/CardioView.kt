@@ -38,5 +38,4 @@ class CardioView (private val cardioList: List <CardioListItems>) : RecyclerView
 
     override fun getItemCount() = cardioList.size
 
-
 }

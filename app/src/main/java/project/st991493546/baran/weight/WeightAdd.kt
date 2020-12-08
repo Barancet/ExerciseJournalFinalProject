@@ -1,4 +1,4 @@
-package project.st991493546.baran.cardio
+package project.st991493546.baran.weight
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import project.st991493546.baran.MainActivity
 import project.st991493546.baran.R
 
-
-class CardioAdd : Fragment() {
+class WeightAdd : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +21,10 @@ class CardioAdd : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        (activity as MainActivity).supportActionBar?.title = "Add Cardio"
+        (activity as MainActivity).supportActionBar?.title = "Add Weight"
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cardio_add, container, false)
+        return inflater.inflate(R.layout.fragment_weight_add, container, false)
     }
+
 }
