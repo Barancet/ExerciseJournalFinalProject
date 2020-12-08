@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_cardio.*
@@ -19,25 +20,17 @@ import project.st991493546.baran.databinding.FragmentWeightBinding
 
 class Weight : Fragment() {
 
+    private val weightModel by lazy {
+        ViewModelProvider(this).get(WeightViewModel::class.java)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
-    private fun generateList(size : Int): List<WeightListItems> {
-        val list = ArrayList<WeightListItems>()
 
-        val item = WeightListItems("Bench", "12/05/2020","10 mins", "2km")
-        val item2 = WeightListItems("Shoulder Press", "12/05/2020","20 mins", "5km")
-        val item3 = WeightListItems("Squats", "12/06/2020","33 mins", "1km")
-
-        list += item
-        list += item2
-        list += item3
-
-        return list
-    }
 
 
     override fun onCreateView(
@@ -61,13 +54,13 @@ class Weight : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        val ourList = generateList(1)
+        //val ourList = generateList(1)
         recycler_view.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
             layoutManager = LinearLayoutManager(activity)
             // set the custom adapter to the RecyclerView
-            adapter = WeightView(ourList)
+            adapter = WeightView(weightModel.getOurList())
         }
     }
 }
