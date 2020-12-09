@@ -11,8 +11,8 @@ data class CardioEntity
     (@PrimaryKey(autoGenerate = true)
      var id: Long,
 
-     @ColumnInfo(name = "date")
-     var date: Date,
+//     @ColumnInfo(name = "date")
+//     var date: Date,
 
      @ColumnInfo(name = "cardioName")
      var cardioName: String,
