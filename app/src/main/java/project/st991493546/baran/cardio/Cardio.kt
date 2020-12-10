@@ -20,14 +20,6 @@ import project.st991493546.baran.databinding.FragmentCardioBinding
 
 class Cardio : Fragment() {
 
-    private val cardioViewModel by lazy {
-        ViewModelProvider(this).get(CardioViewModel::class.java)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,13 +28,15 @@ class Cardio : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentCardioBinding>(inflater,
             R.layout.fragment_cardio, container, false)
-        /*
-        recycler_view.apply {
-          layoutManager = LinearLayoutManager(activity)
-           adapter = CardioViewAdapter(cardioViewModel.displayAll())
-      }
 
-         */
+        val application = requireNotNull(activity).application
+        val dataSource = ApplicationDatabase.getInstance(application).cardioDao()
+
+        val cardioViewModelFactory = CardioViewModelFactory(dataSource, application)
+        val cardioViewModel = ViewModelProvider(this, cardioViewModelFactory).get(CardioViewModel::class.java)
+
+        binding.setLifecycleOwner(this)
+        binding.cardioViewModel = cardioViewModel
 
         binding.btnAddCardio.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_cardio_to_cardioAdd)

@@ -52,12 +52,11 @@ class Weight : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         //val ourList = generateList(1)
-        recycler_view.apply {
-            // set a LinearLayoutManager to handle Android
-            // RecyclerView behavior
-            layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
-            adapter = WeightView(weightModel.getOurList())
-        }
+//        recycler_view.apply {
+//            // set a LinearLayoutManager to handle Android
+//            // RecyclerView behavior
+//            layoutManager = LinearLayoutManager(activity)
+//            // set the custom adapter to the RecyclerView
+//            adapter = WeightView(weightModel.getOurList())
     }
 }

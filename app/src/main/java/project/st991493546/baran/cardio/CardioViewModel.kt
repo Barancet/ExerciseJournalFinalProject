@@ -3,9 +3,7 @@ package project.st991493546.baran.cardio
 import android.app.Application
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,11 +13,13 @@ import project.st991493546.baran.database.ApplicationDatabase
 import project.st991493546.baran.database.CardioDao
 import project.st991493546.baran.database.CardioEntity
 import project.st991493546.baran.database.CardioListItems
+import project.st991493546.baran.formatCardio
 import java.text.SimpleDateFormat
 import java.util.*
 
 class CardioViewModel(private val cardioDao: CardioDao, application: Application) : AndroidViewModel(application) {
 
+    var cardioLiveData = MutableLiveData<CardioEntity?>()
     //private var ourList = generateList(1)
     //private var list = getCardioFromDB()
     //private var cardio = cardioDao.getAll()
@@ -29,16 +29,31 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
     private var listOfDistances = listOf(2, 5, 10)
     private var listOfDuration = listOf(10, 15, 30)
 
-    fun displayAll(){
+    private var cardio = cardioDao.getAllRecordsLiveData()
+
+    var cardioString = Transformations.map(cardio) { cardio ->
+        formatCardio(cardio, application.resources)
+    }
+
+    init {
+        initializeCardioLiveData()
+    }
+
+    private fun initializeCardioLiveData() {
         viewModelScope.launch {
-            cardioItems()
+            cardioLiveData.value = cardioItems()
         }
     }
 
-    suspend fun cardioItems(): CardioEntity?{
-        return withContext(Dispatchers.IO){
-            cardioDao.getAll()
+    fun displayAll(){
+        viewModelScope.launch {
+            cardioLiveData.value = cardioItems()
         }
+    }
+
+    suspend fun cardioItems(): CardioEntity? {
+        var cardioList = cardioDao.getAll()
+        return cardioList
     }
 
     fun insertIntoDB() {

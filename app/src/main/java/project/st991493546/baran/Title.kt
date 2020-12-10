@@ -32,11 +32,7 @@ class Title : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
             R.layout.fragment_title, container, false)
 
-        val application = requireNotNull(activity).application
-        val dataSource = ApplicationDatabase.getInstance(application).cardioDao()
 
-        val cardioViewModelFactory = CardioViewModelFactory(dataSource, application)
-        val cardioViewModel = ViewModelProvider(this, cardioViewModelFactory).get(CardioViewModel::class.java)
 
         binding.btnOpenCardio.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_title_to_cardio)
@@ -46,7 +42,7 @@ class Title : Fragment() {
             view.findNavController().navigate(R.id.action_title_to_weight)
         }
 
-        Log.i("Items", "${cardioViewModel.displayAll()}")
+
 
         return binding.root
     }
