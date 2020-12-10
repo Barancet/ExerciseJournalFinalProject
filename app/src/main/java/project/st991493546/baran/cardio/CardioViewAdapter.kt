@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.cardioitems.view.*
 import project.st991493546.baran.R
+import project.st991493546.baran.database.ApplicationDatabase
 import project.st991493546.baran.database.CardioEntity
 
 
-class CardioViewAdapter (private val cardioList: List <CardioEntity?>) : RecyclerView.Adapter <CardioViewAdapter.ViewHolder>(){
+class CardioViewAdapter (private val cardioList: List<CardioEntity?>) : RecyclerView.Adapter <CardioViewAdapter.ViewHolder>(){
 
 
 //    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -22,6 +25,7 @@ class CardioViewAdapter (private val cardioList: List <CardioEntity?>) : Recycle
 //    }
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cardioitems,  parent, false)
         return ViewHolder(view)
@@ -30,6 +34,9 @@ class CardioViewAdapter (private val cardioList: List <CardioEntity?>) : Recycle
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = cardioList[position]
         Log.i("CardioAdapter", "$currentItem")
+
+
+
 
         holder.view.text_view_1.text = currentItem?.cardioName
         holder.view.txtDate.text = currentItem?.date

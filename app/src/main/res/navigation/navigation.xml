@@ -24,14 +24,11 @@
         tools:layout="@layout/fragment_cardio" >
         <action
             android:id="@+id/action_cardio_to_cardioAdd"
-            app:destination="@id/cardioAdd"
-            app:popUpToInclusive="false" />
+            app:destination="@id/cardioAdd" />
+        <action
+            android:id="@+id/action_cardio_to_cardioEdit"
+            app:destination="@id/cardioEdit" />
     </fragment>
-    <fragment
-        android:id="@+id/cardioAdd"
-        android:name="project.st991493546.baran.cardio.CardioAdd"
-        android:label="fragment_cardio_add"
-        tools:layout="@layout/fragment_cardio_add" />
     <fragment
         android:id="@+id/weight"
         android:name="project.st991493546.baran.weight.Weight"
@@ -46,4 +43,14 @@
         android:name="project.st991493546.baran.weight.WeightAdd"
         android:label="fragment_weight_add"
         tools:layout="@layout/fragment_weight_add" />
+    <fragment
+        android:id="@+id/cardioAdd"
+        android:name="project.st991493546.baran.cardio.CardioAdd"
+        android:label="CardioAdd"
+        tools:layout="@layout/fragment_cardio_add"/>
+    <fragment
+        android:id="@+id/cardioEdit"
+        android:name="project.st991493546.baran.cardio.CardioEdit"
+        android:label="CardioEdit"
+        tools:layout="@layout/fragment_cardio_edit" />
 </navigation>

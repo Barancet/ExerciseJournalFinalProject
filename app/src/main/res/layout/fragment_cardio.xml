@@ -15,55 +15,96 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#B6B6B6"
         tools:context=".MainActivity">
-
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/recycler_view"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="616dp"-->
-        <!--            android:scrollbars="vertical"-->
-        <!--            app:layoutManager="LinearLayoutManager"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
         <Button
             android:id="@+id/btnAddCardio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginEnd="12dp"
             android:text="Add Cardio"
-            app:layout_constraintBaseline_toBaselineOf="@+id/refreshBtn"
-            app:layout_constraintEnd_toStartOf="@+id/refreshBtn"
+            app:layout_constraintEnd_toStartOf="@+id/dltBtn"
+            app:layout_constraintTop_toBottomOf="@+id/txtID" />
+
+        <Button
+            android:id="@+id/dltBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="Delete"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnAddCardio"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ScrollView
+            android:id="@+id/SCROLLER_ID"
+            android:layout_width="0dp"
+            android:layout_height="424dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+            android:fillViewport="true"
+            android:scrollbars="vertical"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginBottom="77dp"
+                android:background="#FFFFFF"
+                android:text="@{cardioViewModel.cardioString}"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/dltBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/txtID"
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="30dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Enter Id"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/SCROLLER_ID" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="28dp"
+            android:text="Please Enter Id:"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtID"
+            app:layout_constraintEnd_toStartOf="@+id/txtID"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/refreshBtn"
+            android:id="@+id/editPg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="86dp"
-            android:text="Refresh"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnAddCardio"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:onClick="@{() -> cardioViewModel.displayAll()}"/>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="11dp"
-            android:layout_marginBottom="114dp"
-            app:layout_constraintBottom_toTopOf="@+id/refreshBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@{cardioViewModel.cardioString}"/>
+            android:layout_marginEnd="14dp"
+            android:text="Update Cardio"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnAddCardio"
+            app:layout_constraintEnd_toStartOf="@+id/btnAddCardio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

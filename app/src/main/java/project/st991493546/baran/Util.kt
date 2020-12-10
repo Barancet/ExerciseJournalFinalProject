@@ -9,8 +9,10 @@ fun formatCardio(cardio: List<CardioEntity>, resources: Resources): Spanned {
     val sb = StringBuilder()
     sb.apply {
         cardio.forEach {
-            append("${it.cardioName} \t ${it.distance} \t ${it.duration} \t ${it.date}<br>")
+            append("<b>ID:</b> ${it.id} <br> <b>Cardio name:</b>s ${it.cardioName} <br> <b>Distance:</b> ${it.distance} <br> <b>Duration:</b> ${it.duration} " +
+                    "<br><b>Date:</b>  ${it.date} <br><br><br>")
         }
     }
     return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
 }
+

@@ -10,81 +10,65 @@
             type="project.st991493546.baran.cardio.CardioViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".cardio.CardioAdd">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".cardio.CardioAdd">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="68dp"
-        android:text="Cardio Entry"
-        android:textSize="26sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="172dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/editTextDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Duration"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/editTextDate"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:hint="Duration"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        <EditText
+            android:id="@+id/editTextDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:hint="Distance"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/editTextDuration"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDuration" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:hint="Distance"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:ems="10"
+            android:hint="Date"
+            android:inputType="date"
+            app:layout_constraintStart_toStartOf="@+id/editTextName"
+            app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
-    <Button
-        android:id="@+id/btnInsertCardio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:text="Insert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
-        android:onClick="@{() -> cardioViewModel.insertIntoDB()}"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnInsertCardio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:text="Insert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDistance" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -16,20 +16,35 @@ import project.st991493546.baran.database.CardioListItems
 import project.st991493546.baran.formatCardio
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class CardioViewModel(private val cardioDao: CardioDao, application: Application) : AndroidViewModel(application) {
 
     var cardioLiveData = MutableLiveData<CardioEntity?>()
-    //private var ourList = generateList(1)
-    //private var list = getCardioFromDB()
-    //private var cardio = cardioDao.getAll()
-    //var list = cardio
+    var cardioUpdateId = MutableLiveData<CardioEntity?>()
+
     private var listOfCardioNames = listOf("Running", "Biking", "Swimming")
     private var listOfDates = listOf("12/05/2020", "12/06/2020", "12/07/2020")
     private var listOfDistances = listOf(2, 5, 10)
     private var listOfDuration = listOf(10, 15, 30)
 
+    private var updateID : Long = 0
+
+
+
+    fun setIDForUpdate (id : Long){
+        updateID = id
+    }
+    fun getIDforUpdate() : Long{
+        return updateID
+    }
+
     private var cardio = cardioDao.getAllRecordsLiveData()
+    var cardioOneList : CardioEntity? = null
+
+    fun OneList() : CardioEntity? {
+        return cardioOneList
+    }
 
     var cardioString = Transformations.map(cardio) { cardio ->
         formatCardio(cardio, application.resources)
@@ -51,18 +66,19 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
         }
     }
 
-    suspend fun cardioItems(): CardioEntity? {
+    suspend fun cardioItems() : CardioEntity? {
         var cardioList = cardioDao.getAll()
         return cardioList
     }
 
-    fun insertIntoDB() {
+    fun insertIntoDB(name : String, date : String, duration : Int, distance: Int) {
         val cardio = CardioEntity(
             0,
-            cardioName = listOfCardioNames[(0..2).random()],
-            distance = listOfDistances[(0..2).random()],
-            duration = listOfDuration[(0..2).random()],
-            date = SimpleDateFormat("dd-MM-yyyy").format(Date())
+            cardioName = name,
+            distance = distance,
+            duration = duration,
+            date = date
+            //the date is Int. so get the value of text box which is date and format it. the number shoud be DDMMYYYY
         )
 
         viewModelScope.launch {
@@ -86,9 +102,41 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
         }
 
     }
+    fun deleteById(id : Long) {
+        viewModelScope.launch {
+            deleteByIdSuspend(id)
+            cardioLiveData.value = cardioItems()
+        }
+    }
+
+    //
+    private suspend fun deleteByIdSuspend(id : Long) {
+        return withContext(Dispatchers.IO) {
+            cardioDao.delete(id)
+        }
+    }
+
+    fun displayOne(id: Long){
+        viewModelScope.launch {
+            cardioLiveData.value = cardioOne(id)
+            Log.i("Test View", "$id")
+        }
+    }
+
+    suspend fun cardioOne(id : Long) : CardioEntity? {
+        var cardioList = cardioDao.getOneRecord(id)
+        cardioOneList = cardioList
+        Log.i("test actual", "$cardioOneList")
+        return cardioList
+    }
+
 
 }
 
+//private var ourList = generateList(1)
+//private var list = getCardioFromDB()
+//private var cardio = cardioDao.getAll()
+//var list = cardio
 
 //        var list: List<CardioEntity?>
 //        list = emptyList()
@@ -107,6 +155,8 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
 //                    Log.i("CardioViewModel", "inserted ${cardioDao}")
 //                }
 //            }
+
+
 
 
 

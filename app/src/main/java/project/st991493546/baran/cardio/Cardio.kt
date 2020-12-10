@@ -1,15 +1,18 @@
 package project.st991493546.baran.cardio
 
-import android.content.Context
+
 import android.os.Bundle
+import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+
 
 import kotlinx.android.synthetic.main.fragment_cardio.*
 import project.st991493546.baran.MainActivity
@@ -19,6 +22,8 @@ import project.st991493546.baran.databinding.FragmentCardioBinding
 
 
 class Cardio : Fragment() {
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,11 +40,27 @@ class Cardio : Fragment() {
         val cardioViewModelFactory = CardioViewModelFactory(dataSource, application)
         val cardioViewModel = ViewModelProvider(this, cardioViewModelFactory).get(CardioViewModel::class.java)
 
+
+
         binding.setLifecycleOwner(this)
         binding.cardioViewModel = cardioViewModel
 
+
+
         binding.btnAddCardio.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_cardio_to_cardioAdd)
+        }
+        binding.editPg.setOnClickListener {view: View ->
+            cardioViewModel.displayOne(binding.txtID.text.toString().toLong())
+            Log.i("Test", "${binding.txtID.text.toString().toLong()}")
+            view.findNavController().navigate(R.id.action_cardio_to_cardioEdit)
+
+
+        }
+        binding.dltBtn.setOnClickListener{
+            var id = binding.txtID.text.toString().toLong()
+            cardioViewModel.deleteById(id)
+            binding.txtID.setText("")
         }
 
         return binding.root
