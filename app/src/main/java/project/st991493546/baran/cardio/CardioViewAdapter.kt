@@ -1,5 +1,6 @@
 package project.st991493546.baran.cardio
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,7 @@ class CardioViewAdapter (private val cardioList: List <CardioEntity?>) : Recycle
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = cardioList[position]
+        Log.i("CardioAdapter", "$currentItem")
 
         holder.view.text_view_1.text = currentItem?.cardioName
         holder.view.txtDate.text = currentItem?.date

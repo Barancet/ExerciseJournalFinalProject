@@ -1,12 +1,17 @@
 package project.st991493546.baran
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import project.st991493546.baran.cardio.CardioViewModel
+import project.st991493546.baran.cardio.CardioViewModelFactory
+import project.st991493546.baran.database.ApplicationDatabase
 import project.st991493546.baran.databinding.FragmentTitleBinding
 
 class Title : Fragment() {
@@ -27,6 +32,12 @@ class Title : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
             R.layout.fragment_title, container, false)
 
+        val application = requireNotNull(activity).application
+        val dataSource = ApplicationDatabase.getInstance(application).cardioDao()
+
+        val cardioViewModelFactory = CardioViewModelFactory(dataSource, application)
+        val cardioViewModel = ViewModelProvider(this, cardioViewModelFactory).get(CardioViewModel::class.java)
+
         binding.btnOpenCardio.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_title_to_cardio)
         }
@@ -34,6 +45,8 @@ class Title : Fragment() {
         binding.btnOpenWeights.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_title_to_weight)
         }
+
+        Log.i("Items", "${cardioViewModel.displayAll()}")
 
         return binding.root
     }

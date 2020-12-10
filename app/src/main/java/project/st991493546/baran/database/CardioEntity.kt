@@ -7,8 +7,9 @@ import java.sql.Date
 
 @Entity(tableName = "cardio_table")
 
-data class CardioEntity
-    (@PrimaryKey(autoGenerate = true)
+data class CardioEntity(
+
+    @PrimaryKey(autoGenerate = true)
      var id: Long,
 
      @ColumnInfo(name = "date")
