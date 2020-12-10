@@ -11,7 +11,7 @@ interface WeightDao {
     @Query("SELECT * from weight_table WHERE id = :key")
     fun getOne(key: Long): WeightEntity?
 
-    @Query("SELECT * from cardio_table")
+    @Query("SELECT * from weight_table")
     fun getAll(): List<WeightEntity?>
 
     @Insert

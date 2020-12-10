@@ -30,15 +30,12 @@ class Weight : Fragment() {
 
     }
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        (activity as MainActivity).supportActionBar?.title = "Weight"
+        (activity as MainActivity).supportActionBar?.title = "Weight Journal"
 
         val binding = DataBindingUtil.inflate<FragmentWeightBinding>(inflater,
             R.layout.fragment_weight, container, false)
