@@ -4,18 +4,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.cardioitems.view.*
 import project.st991493546.baran.R
-import project.st991493546.baran.database.ApplicationDatabase
 import project.st991493546.baran.database.CardioEntity
 
 
-class CardioViewAdapter (private val cardioList: List<CardioEntity?>) : RecyclerView.Adapter <CardioViewAdapter.ViewHolder>(){
+class CardioViewAdapter : RecyclerView.Adapter <CardioViewAdapter.ViewHolder>(){
 
+    private var cardioList = emptyList<CardioEntity>()
 
 //    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 //        val name: TextView = itemView.text_view_1
@@ -33,19 +31,27 @@ class CardioViewAdapter (private val cardioList: List<CardioEntity?>) : Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = cardioList[position]
-        Log.i("CardioAdapter", "$currentItem")
 
-
-
-
-        holder.view.text_view_1.text = currentItem?.cardioName
+        holder.view.Id.text = currentItem?.id.toString()
+        holder.view.txtName.text = currentItem?.cardioName
         holder.view.txtDate.text = currentItem?.date
-        holder.view.txtDistance.text = currentItem?.distance.toString()
-        holder.view.txtDuration.text = currentItem?.duration.toString()
+        holder.view.txtSets.text = currentItem?.distance.toString()
+        holder.view.txtReps.text = currentItem?.duration.toString()
+
+
+        holder.view.relativeLayout.setOnClickListener{
+            val action = CardioDirections.actionCardioToCardioEdit(currentItem)
+            holder.view.findNavController().navigate(action)
+        }
     }
 
-    override fun getItemCount() = cardioList.size
+    override fun getItemCount() : Int = cardioList.size
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+
+    fun setData(cardio : List<CardioEntity>){
+        this.cardioList = cardio
+        notifyDataSetChanged()
+    }
 
 }

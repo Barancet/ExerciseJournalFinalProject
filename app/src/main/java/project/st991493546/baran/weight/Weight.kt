@@ -5,30 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_cardio.*
+import kotlinx.android.synthetic.main.fragment_weight.view.*
 import project.st991493546.baran.MainActivity
 import project.st991493546.baran.R
-
-import project.st991493546.baran.database.WeightListItems
-import project.st991493546.baran.databinding.FragmentCardioBinding
-import project.st991493546.baran.databinding.FragmentWeightBinding
+import project.st991493546.baran.database.ApplicationDatabase
 
 class Weight : Fragment() {
 
-    private val weightModel by lazy {
-        ViewModelProvider(this).get(WeightViewModel::class.java)
-    }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,26 +28,45 @@ class Weight : Fragment() {
 
         (activity as MainActivity).supportActionBar?.title = "Weight Journal"
 
-        val binding = DataBindingUtil.inflate<FragmentWeightBinding>(inflater,
-            R.layout.fragment_weight, container, false)
+        val view = inflater.inflate(R.layout.fragment_weight, container, false)
 
-        binding.btnAddWeight.setOnClickListener { view: View ->
+
+        val application = requireNotNull(activity).application
+        val dataSource = ApplicationDatabase.getInstance(application).weightDao()
+
+        val weightViewModelFactory = WeightViewModelFactory(dataSource, application)
+        val weightViewModel = ViewModelProvider(this, weightViewModelFactory).get(WeightViewModel::class.java)
+
+//        binding.setLifecycleOwner(this)
+//        binding.cardioViewModel = cardioViewModel
+
+//        recycler_view.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = CardioViewAdapter(list)
+//        }
+        val adapter = WeightView()
+        val recyclerview = view.recyclerviewweight
+        recyclerview.adapter = adapter
+        recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        weightViewModel.readAllData.observe(viewLifecycleOwner, Observer { weight ->
+            adapter.setData(weight)
+        })
+
+
+        view.btnAdd.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_weight_to_weightAdd)
         }
-        return binding.root
 
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_cardio, container, false)
+        view.btnWeightDelete.setOnClickListener{
+            var id = view.txtWeightID.text.toString().toLong()
+            weightViewModel.deleteById(id)
+            view.txtWeightID.setText("")
+        }
+
+
+
+        return view
     }
 
-    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(itemView, savedInstanceState)
-        //val ourList = generateList(1)
-//        recycler_view.apply {
-//            // set a LinearLayoutManager to handle Android
-//            // RecyclerView behavior
-//            layoutManager = LinearLayoutManager(activity)
-//            // set the custom adapter to the RecyclerView
-//            adapter = WeightView(weightModel.getOurList())
-    }
+
 }

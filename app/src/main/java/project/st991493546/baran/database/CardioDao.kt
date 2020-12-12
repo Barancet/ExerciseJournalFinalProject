@@ -1,6 +1,7 @@
 package project.st991493546.baran.database
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -17,7 +18,7 @@ interface CardioDao {
     suspend fun insert(cardio: CardioEntity)
 
     @Update
-    fun update(cardio: CardioEntity)
+    suspend fun update(cardio: CardioEntity)
 
     @Query("DELETE FROM cardio_table Where id = :key")
     suspend fun delete(key: Long)
@@ -28,6 +29,6 @@ interface CardioDao {
     fun getAllRecordsLiveData(): LiveData<List<CardioEntity>>
 
     @Query("SELECT * from cardio_table WHERE id = :id")
-    suspend fun getOneRecord(id: Long) : CardioEntity?
+    suspend fun getOneRecord(id: Long) : CardioEntity
 
 }

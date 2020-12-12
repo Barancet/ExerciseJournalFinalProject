@@ -16,95 +16,97 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#B6B6B6"
+        app:layout_constraintEnd_toStartOf="@+id/txtWeightID"
+        app:layout_constraintStart_toStartOf="@+id/txtWeightID"
         tools:context=".MainActivity">
 
 
+        <!--        <ScrollView-->
+        <!--            android:id="@+id/SCROLLER_ID"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="424dp"-->
+        <!--            android:layout_marginStart="3dp"-->
+        <!--            android:layout_marginEnd="3dp"-->
+        <!--            android:fillViewport="true"-->
+        <!--            android:scrollbars="vertical"-->
+        <!--            android:textAlignment="center"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/textView"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_marginStart="11dp"-->
+        <!--                android:layout_marginTop="16dp"-->
+        <!--                android:layout_marginEnd="11dp"-->
+        <!--                android:layout_marginBottom="77dp"-->
+        <!--                android:background="#FFFFFF"-->
+        <!--                android:text="@{cardioViewModel.cardioString}"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:textSize="20dp"-->
+        <!--                app:layout_constraintBottom_toTopOf="@+id/dltBtn"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--        </ScrollView>-->
+
         <Button
             android:id="@+id/btnAddCardio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="108dp"
+            android:layout_height="49dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginBottom="108dp"
             android:text="Add Cardio"
-            app:layout_constraintEnd_toStartOf="@+id/dltBtn"
-            app:layout_constraintTop_toBottomOf="@+id/txtID" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/dltBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
+            android:layout_height="49dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="112dp"
             android:text="Delete"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnAddCardio"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <ScrollView
-            android:id="@+id/SCROLLER_ID"
-            android:layout_width="0dp"
-            android:layout_height="424dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:fillViewport="true"
-            android:scrollbars="vertical"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginBottom="77dp"
-                android:background="#FFFFFF"
-                android:text="@{cardioViewModel.cardioString}"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/dltBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </ScrollView>
 
         <EditText
             android:id="@+id/txtID"
-            android:layout_width="0dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="30dp"
+            android:layout_width="152dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="204dp"
             android:background="#FFFFFF"
             android:ems="10"
             android:hint="Enter Id"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/SCROLLER_ID" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="0dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="28dp"
+            android:layout_width="160dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="208dp"
+            android:layout_marginBottom="208dp"
             android:text="Please Enter Id:"
             android:textAlignment="center"
             android:textSize="18sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/txtID"
-            app:layout_constraintEnd_toStartOf="@+id/txtID"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/editPg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
-            android:text="Update Cardio"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnAddCardio"
-            app:layout_constraintEnd_toStartOf="@+id/btnAddCardio" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="414dp"
+            android:layout_height="442dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/cardioitems" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

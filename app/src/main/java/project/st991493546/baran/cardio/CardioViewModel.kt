@@ -21,30 +21,27 @@ import kotlin.collections.ArrayList
 class CardioViewModel(private val cardioDao: CardioDao, application: Application) : AndroidViewModel(application) {
 
     var cardioLiveData = MutableLiveData<CardioEntity?>()
-    var cardioUpdateId = MutableLiveData<CardioEntity?>()
-
-    private var listOfCardioNames = listOf("Running", "Biking", "Swimming")
-    private var listOfDates = listOf("12/05/2020", "12/06/2020", "12/07/2020")
-    private var listOfDistances = listOf(2, 5, 10)
-    private var listOfDuration = listOf(10, 15, 30)
-
-    private var updateID : Long = 0
 
 
 
-    fun setIDForUpdate (id : Long){
-        updateID = id
-    }
-    fun getIDforUpdate() : Long{
-        return updateID
+
+    val readAllData : LiveData<List<CardioEntity>> = cardioDao.getAllRecordsLiveData()
+
+    suspend fun updateCardioCoroutine(cardio : CardioEntity){
+        cardioDao.update(cardio)
     }
 
-    private var cardio = cardioDao.getAllRecordsLiveData()
-    var cardioOneList : CardioEntity? = null
-
-    fun OneList() : CardioEntity? {
-        return cardioOneList
+    fun updateCardio(cardio : CardioEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            updateCardioCoroutine(cardio)
+        }
     }
+
+
+    var cardio = cardioDao.getAllRecordsLiveData()
+
+
+
 
     var cardioString = Transformations.map(cardio) { cardio ->
         formatCardio(cardio, application.resources)
@@ -57,8 +54,11 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
     private fun initializeCardioLiveData() {
         viewModelScope.launch {
             cardioLiveData.value = cardioItems()
+
         }
     }
+
+
 
     fun displayAll(){
         viewModelScope.launch {
@@ -114,20 +114,6 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
         return withContext(Dispatchers.IO) {
             cardioDao.delete(id)
         }
-    }
-
-    fun displayOne(id: Long){
-        viewModelScope.launch {
-            cardioLiveData.value = cardioOne(id)
-            Log.i("Test View", "$id")
-        }
-    }
-
-    suspend fun cardioOne(id : Long) : CardioEntity? {
-        var cardioList = cardioDao.getOneRecord(id)
-        cardioOneList = cardioList
-        Log.i("test actual", "$cardioOneList")
-        return cardioList
     }
 
 

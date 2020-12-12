@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import org.jetbrains.anko.find
 import project.st991493546.baran.cardio.CardioViewModel
 import project.st991493546.baran.cardio.CardioViewModelFactory
 import project.st991493546.baran.database.ApplicationDatabase
@@ -40,6 +41,9 @@ class Title : Fragment() {
 
         binding.btnOpenWeights.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_title_to_weight)
+        }
+        binding.abt.setOnClickListener{ view: View ->
+            view.findNavController().navigate(R.id.action_title_to_about)
         }
 
 

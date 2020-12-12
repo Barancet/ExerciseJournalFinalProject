@@ -14,61 +14,59 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".weight.WeightAdd">
+        tools:context=".weight.WeightEdit">
 
         <EditText
-            android:id="@+id/editTextName"
+            android:id="@+id/editTextType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="91dp"
             android:ems="10"
-            android:hint="Name"
+            android:hint="Type"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextReps"
+            android:id="@+id/editTextResp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
             android:ems="10"
-            android:hint="Sets"
+            android:hint="Reps"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="@+id/editTextSets"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSets" />
-
-        <EditText
-            android:id="@+id/editTextDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ems="10"
-            android:hint="Date"
-            android:inputType="date"
-            app:layout_constraintStart_toStartOf="@+id/editTextName"
-            app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+            app:layout_constraintStart_toStartOf="@+id/editTextType"
+            app:layout_constraintTop_toBottomOf="@+id/editTextType" />
 
         <EditText
             android:id="@+id/editTextSets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:ems="10"
-            android:hint="Reps"
+            android:hint="Sets"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="@+id/editTextDate"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+            app:layout_constraintStart_toStartOf="@+id/editTextResp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextResp" />
 
-        <Button
-            android:id="@+id/btnInsertWeight"
+        <EditText
+            android:id="@+id/editTextDateWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Insert"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextReps" />
+            android:layout_marginTop="7dp"
+            android:ems="10"
+            android:hint="Date"
+            android:inputType="date"
+            app:layout_constraintStart_toStartOf="@+id/editTextSets"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSets" />
+
+        <Button
+            android:id="@+id/btnUpdateWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="74dp"
+            android:text="Update"
+            app:layout_constraintEnd_toEndOf="@+id/editTextDateWeight"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateWeight" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

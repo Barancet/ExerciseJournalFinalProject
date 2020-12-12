@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_title_to_weight"
             app:destination="@id/weight" />
+        <action
+            android:id="@+id/action_title_to_about"
+            app:destination="@id/about" />
     </fragment>
     <fragment
         android:id="@+id/cardio"
@@ -37,6 +40,9 @@
         <action
             android:id="@+id/action_weight_to_weightAdd"
             app:destination="@id/weightAdd" />
+        <action
+            android:id="@+id/action_weight_to_weightEdit"
+            app:destination="@id/weightEdit" />
     </fragment>
     <fragment
         android:id="@+id/weightAdd"
@@ -52,5 +58,23 @@
         android:id="@+id/cardioEdit"
         android:name="project.st991493546.baran.cardio.CardioEdit"
         android:label="CardioEdit"
-        tools:layout="@layout/fragment_cardio_edit" />
+        tools:layout="@layout/fragment_cardio_edit" >
+        <argument
+            android:name="currentCardio"
+            app:argType="project.st991493546.baran.database.CardioEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/weightEdit"
+        android:name="project.st991493546.baran.weight.WeightEdit"
+        android:label="WeightEdit"
+        tools:layout="@layout/fragment_weight_edit">
+        <argument
+            android:name="currentWeight"
+            app:argType="project.st991493546.baran.database.WeightEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/about"
+        android:name="project.st991493546.baran.About"
+        android:label="About"
+        tools:layout="@layout/fragment_about"/>
 </navigation>
