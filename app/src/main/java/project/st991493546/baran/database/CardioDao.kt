@@ -9,17 +9,25 @@ import androidx.room.Update
 @Dao
 interface CardioDao {
     @Query("SELECT * from cardio_table WHERE id = :key")
-    fun getOne(key: Long): CardioEntity?
+    suspend fun getOne(key: Long): CardioEntity?
 
     @Query("SELECT * from cardio_table")
-    fun getAll(): List<CardioEntity?>
+    suspend fun getAll(): CardioEntity?
 
     @Insert
-    fun insert(cardio: CardioEntity)
+    suspend fun insert(cardio: CardioEntity)
 
     @Update
-    fun update(cardio: CardioEntity)
+    suspend fun update(cardio: CardioEntity)
 
     @Query("DELETE FROM cardio_table Where id = :key")
-    fun delete(key: Long)
+    suspend fun delete(key: Long)
+
+
+    @Query("SELECT * FROM cardio_table")
+    fun getAllRecordsLiveData(): LiveData<List<CardioEntity>>
+
+    @Query("SELECT * from cardio_table WHERE id = :id")
+    suspend fun getOneRecord(id: Long): CardioEntity
+
 }

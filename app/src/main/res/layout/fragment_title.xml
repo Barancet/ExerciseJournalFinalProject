@@ -10,63 +10,83 @@
         android:layout_height="match_parent"
         android:background="#FFFFFF">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="132dp"
-            android:text="Exercise Journal"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <Button
             android:id="@+id/btnOpenCardio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="82dp"
+            android:layout_height="71dp"
+            android:layout_marginEnd="70dp"
+            android:background="#2196F3"
+            android:shadowColor="#FFFFFF"
             android:text="Cardio"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
         <Button
             android:id="@+id/btnOpenWeights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="78dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="60dp"
-            android:text="Weights"
+            android:layout_width="82dp"
+            android:layout_height="71dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="44dp"
+            android:background="#2196F3"
+            android:text="Weight"
+            app:layout_constraintBottom_toTopOf="@+id/abt"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.931"
-            app:layout_constraintStart_toEndOf="@+id/btnOpenCardio"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="84dp"
-            android:layout_height="73dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="144dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginEnd="121dp"
+            android:layout_marginBottom="42dp"
             android:background="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/btnOpenWeights"
+            app:layout_constraintEnd_toStartOf="@+id/btnOpenCardio"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
             app:srcCompat="@drawable/cardio" />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="86dp"
-            android:layout_height="73dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="144dp"
-            android:layout_marginEnd="63dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.933"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginEnd="120dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnOpenWeights"
+            app:layout_constraintEnd_toStartOf="@+id/btnOpenWeights"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnOpenWeights"
             app:srcCompat="@drawable/weight" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/btnOpenCardio"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/gym" />
+
+        <Button
+            android:id="@+id/abt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginEnd="69dp"
+            android:layout_marginBottom="167dp"
+            android:background="#2196F3"
+            android:text="About"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnOpenWeights" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

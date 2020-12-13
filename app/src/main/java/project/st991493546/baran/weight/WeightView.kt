@@ -3,36 +3,41 @@ package project.st991493546.baran.weight
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.weightitems.view.*
 import project.st991493546.baran.R
-import project.st991493546.baran.database.WeightListItems
+import project.st991493546.baran.database.WeightEntity
 
-class WeightView (private val weightList: List <WeightListItems>) : RecyclerView.Adapter <WeightView.MyViewHolder>(){
+class WeightView : RecyclerView.Adapter<WeightView.ViewHolder>() {
 
+    private var weightList = emptyList<WeightEntity>()
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val name: TextView = itemView.txtName
-        val date: TextView = itemView.txtDate
-        val reps: TextView = itemView.txtReps
-        val sets: TextView = itemView.txtSets
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.weightitems, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.weightitems,  parent, false)
-
-        return MyViewHolder(itemView)
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = weightList[position]
+        holder.view.IdWeight.text = currentItem?.id.toString()
+        holder.view.txtName.text = currentItem.weightType
+        holder.view.txtDate.text = currentItem.date
+        holder.view.txtReps.text = currentItem.reps.toString()
+        holder.view.txtSets.text = currentItem.sets.toString()
 
-        holder.name.text = currentItem.name
-        holder.date.text = currentItem.date
-        holder.reps.text = currentItem.reps
-        holder.sets.text = currentItem.sets
+        holder.view.relativeLayoutWeight.setOnClickListener {
+            val action = WeightDirections.actionWeightToWeightEdit(currentItem)
+            holder.view.findNavController().navigate(action)
+        }
     }
 
-    override fun getItemCount() = weightList.size
+    override fun getItemCount(): Int = weightList.size
+
+    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+
+    fun setData(weight: List<WeightEntity>) {
+        this.weightList = weight
+        notifyDataSetChanged()
+    }
 }

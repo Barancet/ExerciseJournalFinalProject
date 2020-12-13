@@ -9,17 +9,26 @@ import androidx.room.Update
 @Dao
 interface WeightDao {
     @Query("SELECT * from weight_table WHERE id = :key")
-    fun getOne(key: Long): WeightEntity?
+    suspend fun getOne(key: Long): WeightEntity?
 
-    @Query("SELECT * from cardio_table")
-    fun getAll(): List<WeightEntity?>
+    @Query("SELECT * from weight_table")
+    suspend fun getAll(): WeightEntity?
 
     @Insert
-    fun insert(weight: WeightEntity)
+    suspend fun insert(weight: WeightEntity)
 
     @Update
-    fun update(weight: WeightEntity)
+    suspend fun update(weight: WeightEntity)
 
     @Query("DELETE FROM weight_table Where id = :key")
-    fun delete(key: Long)
+    suspend fun delete(key: Long)
+
+
+    @Query("SELECT * FROM weight_table")
+    fun getAllRecordsLiveData(): LiveData<List<WeightEntity>>
+
+    @Query("SELECT * from weight_table WHERE id = :id")
+    suspend fun getOneRecord(id: Long): WeightEntity
+
+
 }
