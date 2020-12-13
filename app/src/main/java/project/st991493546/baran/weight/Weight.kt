@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_cardio.view.*
 import kotlinx.android.synthetic.main.fragment_weight.view.*
 import project.st991493546.baran.MainActivity
 import project.st991493546.baran.R
@@ -41,9 +43,14 @@ class Weight : Fragment() {
         }
 
         view.btnWeightDelete.setOnClickListener {
-            var id = view.txtWeightID.text.toString().toLong()
-            weightViewModel.deleteById(id)
-            view.txtWeightID.setText("")
+            if(view.txtWeightID.text.toString().trim() != ""){
+                var id = view.txtWeightID.text.toString().toLong()
+                weightViewModel.deleteById(id)
+                view.txtWeightID.setText("")
+                Toast.makeText(requireContext(), "Successfully Deleted", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireContext(), "Please enter correct Integer ID", Toast.LENGTH_SHORT).show()
+            }
         }
         return view
     }

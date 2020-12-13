@@ -66,8 +66,8 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="160dp"
-            android:layout_height="25dp"
+            android:layout_width="156dp"
+            android:layout_height="33dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="26dp"
             android:text="Please Enter Id:"
@@ -89,14 +89,15 @@
 
         <EditText
             android:id="@+id/txtID"
-            android:layout_width="152dp"
-            android:layout_height="31dp"
+            android:layout_width="166dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="26dp"
-            android:background="#FFFFFF"
             android:ems="10"
             android:hint="Enter Id"
-            android:inputType="textPersonName"
+
+            android:inputType="number"
+            android:singleLine="true"
             app:layout_constraintBottom_toTopOf="@+id/dltBtn"
             app:layout_constraintEnd_toEndOf="parent" />
 

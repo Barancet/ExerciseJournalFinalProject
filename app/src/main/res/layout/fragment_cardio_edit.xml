@@ -35,7 +35,7 @@
             android:layout_marginTop="24dp"
             android:ems="10"
             android:hint="Duration"
-            android:inputType="textPersonName"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="@+id/editTextDate"
             app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
@@ -46,7 +46,7 @@
             android:layout_marginTop="25dp"
             android:ems="10"
             android:hint="Distance"
-            android:inputType="textPersonName"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="@+id/editTextDuration"
             app:layout_constraintTop_toBottomOf="@+id/editTextDuration" />
 

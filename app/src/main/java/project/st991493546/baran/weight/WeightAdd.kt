@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import project.st991493546.baran.MainActivity
 import project.st991493546.baran.R
 import project.st991493546.baran.database.ApplicationDatabase
@@ -38,13 +39,22 @@ class WeightAdd : Fragment() {
         binding.setLifecycleOwner(this)
         binding.weightViewModel = weightViewModel
 
-        binding.btnInsertWeight.setOnClickListener {
-            var name = binding.editTextName.text.toString()
-            var date = binding.editTextDate.text.toString()
-            var reps = binding.editTextReps.text.toString().toInt()
-            var sets = binding.editTextSets.text.toString().toInt()
-            weightViewModel.insertIntoDB(name, date, reps, sets)
-            Toast.makeText(requireContext(), "Added Successfully", Toast.LENGTH_SHORT).show()
+        binding.btnInsertWeight.setOnClickListener {view:View ->
+
+            if(binding.editTextName.text.toString() != "" && binding.editTextDate.text.toString() != "" &&
+                binding.editTextReps.text.toString() != "" && binding.editTextSets.text.toString() != ""){
+                var name = binding.editTextName.text.toString()
+                var date = binding.editTextDate.text.toString()
+                var reps = binding.editTextReps.text.toString().toInt()
+                var sets = binding.editTextSets.text.toString().toInt()
+                weightViewModel.insertIntoDB(name, date, reps, sets)
+                Toast.makeText(requireContext(), "Added Successfully", Toast.LENGTH_SHORT).show()
+                view.findNavController().navigate(R.id.action_weightAdd_to_weight)
+            }
+            else{
+                Toast.makeText(requireContext(), "Please enter all values", Toast.LENGTH_SHORT).show()
+            }
+
         }
         // Inflate the layout for this fragment
         return binding.root

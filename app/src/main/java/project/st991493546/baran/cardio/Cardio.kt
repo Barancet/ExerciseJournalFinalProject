@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -41,9 +42,15 @@ class Cardio : Fragment() {
         }
 
         view.dltBtn.setOnClickListener {
-            var id = view.txtID.text.toString().toLong()
-            cardioViewModel.deleteById(id)
-            view.txtID.setText("")
+            if(view.txtID.text.toString().trim() != ""){
+                var id = view.txtID.text.toString().toLong()
+                cardioViewModel.deleteById(id)
+                view.txtID.setText("")
+                Toast.makeText(requireContext(), "Successfully Deleted", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireContext(), "Please enter correct Integer ID", Toast.LENGTH_SHORT).show()
+            }
+
         }
         return view
     }

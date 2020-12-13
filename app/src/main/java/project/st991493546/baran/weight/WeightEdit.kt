@@ -8,8 +8,14 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import kotlinx.android.synthetic.main.fragment_cardio_edit.*
+import kotlinx.android.synthetic.main.fragment_cardio_edit.editTextDate
+import kotlinx.android.synthetic.main.fragment_cardio_edit.editTextName
+import kotlinx.android.synthetic.main.fragment_weight_add.*
 import kotlinx.android.synthetic.main.fragment_weight_edit.*
+import kotlinx.android.synthetic.main.fragment_weight_edit.editTextSets
 import project.st991493546.baran.MainActivity
 import project.st991493546.baran.R
 import project.st991493546.baran.database.ApplicationDatabase
@@ -47,8 +53,9 @@ class WeightEdit : Fragment() {
         binding.editTextResp.setText(args.currentWeight.reps.toString())
         binding.editTextSets.setText(args.currentWeight.sets.toString())
 
-        binding.btnUpdateWeight.setOnClickListener {
+        binding.btnUpdateWeight.setOnClickListener {view:View ->
             updateWeight()
+            view.findNavController().navigate(R.id.action_weightEdit_to_weight)
         }
 
         binding.setLifecycleOwner(this)
@@ -58,13 +65,18 @@ class WeightEdit : Fragment() {
     }
 
     private fun updateWeight() {
-        val type = editTextType.text.toString()
-        val date = editTextDateWeight.text.toString()
-        val reps = editTextResp.text.toString().toInt()
-        val sets = editTextSets.text.toString().toInt()
+        if(editTextType.text.toString() != "" && editTextDateWeight.text.toString()!= "" &&
+            editTextResp.text.toString() != "" && editTextSets.text.toString() != ""){
+            val type = editTextType.text.toString()
+            val date = editTextDateWeight.text.toString()
+            val reps = editTextResp.text.toString().toInt()
+            val sets = editTextSets.text.toString().toInt()
 
-        val weightUpdated = WeightEntity(args.currentWeight.id, date, type, reps, sets)
-        weightViewModel.updateWeight(weightUpdated)
-        Toast.makeText(requireContext(), "Updated Successfully", Toast.LENGTH_SHORT).show()
+            val weightUpdated = WeightEntity(args.currentWeight.id, date, type, reps, sets)
+            weightViewModel.updateWeight(weightUpdated)
+            Toast.makeText(requireContext(), "Updated Successfully", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireContext(), "Please enter all values", Toast.LENGTH_SHORT).show()
+        }
     }
 }

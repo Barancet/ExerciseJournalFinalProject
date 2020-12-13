@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_cardio_edit.*
 import project.st991493546.baran.MainActivity
@@ -43,8 +44,9 @@ class CardioEdit : Fragment() {
         binding.editTextDistance.setText(args.currentCardio.distance.toString())
         binding.editTextDuration.setText(args.currentCardio.duration.toString())
 
-        binding.btnUpdateCardio.setOnClickListener {
+        binding.btnUpdateCardio.setOnClickListener {view:View ->
             updateCardio()
+            view.findNavController().navigate(R.id.action_cardioEdit_to_cardio)
         }
         binding.setLifecycleOwner(this)
         binding.cardioViewModel = cardioViewModel
@@ -52,12 +54,21 @@ class CardioEdit : Fragment() {
     }
 
     private fun updateCardio() {
-        val name = editTextName.text.toString()
-        val date = editTextDate.text.toString()
-        val distance = editTextDistance.text.toString().toInt()
-        val duration = editTextDuration.text.toString().toInt()
-        val cardioUpdated = CardioEntity(args.currentCardio.id, date, name, duration, distance)
-        cardioViewModel.updateCardio(cardioUpdated)
-        Toast.makeText(requireContext(), "Update Successfully", Toast.LENGTH_SHORT).show()
+
+        if(editTextName.text.toString() != "" && editTextDate.text.toString() != "" &&
+            editTextDistance.text.toString() != "" && editTextDuration.text.toString() != ""){
+            val name = editTextName.text.toString()
+            val date = editTextDate.text.toString()
+            val distance = editTextDistance.text.toString().toInt()
+            val duration = editTextDuration.text.toString().toInt()
+            val cardioUpdated = CardioEntity(args.currentCardio.id, date, name, duration, distance)
+            cardioViewModel.updateCardio(cardioUpdated)
+            Toast.makeText(requireContext(), "Update Successfully", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(requireContext(), "Please update all the fields", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 }

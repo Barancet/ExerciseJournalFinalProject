@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import project.st991493546.baran.MainActivity
 import project.st991493546.baran.R
 import project.st991493546.baran.database.ApplicationDatabase
@@ -32,12 +34,22 @@ class CardioAdd : Fragment() {
 
         binding.setLifecycleOwner(this)
         binding.cardioViewModel = cardioViewModel
-        binding.btnInsertCardio.setOnClickListener {
-            var name = binding.editTextName.text.toString()
-            var date = binding.editTextDate.text.toString()
-            var distance = binding.editTextDistance.text.toString().toInt()
-            var duration = binding.editTextDuration.text.toString().toInt()
-            cardioViewModel.insertIntoDB(name, date, duration, distance)
+        binding.btnInsertCardio.setOnClickListener {view: View ->
+
+            if(binding.editTextName.text.toString() != "" && binding.editTextDate.text.toString() != "" &&
+                binding.editTextDistance.text.toString() != "" && binding.editTextDuration.text.toString() != ""){
+                var name = binding.editTextName.text.toString()
+                var date = binding.editTextDate.text.toString()
+                var distance = binding.editTextDistance.text.toString().toInt()
+                var duration = binding.editTextDuration.text.toString().toInt()
+                cardioViewModel.insertIntoDB(name, date, duration, distance)
+                Toast.makeText(requireContext(), "Added Successfully", Toast.LENGTH_SHORT).show()
+                view.findNavController().navigate(R.id.action_cardioAdd_to_cardio)
+            }
+            else{
+                Toast.makeText(requireContext(), "Please enter all values", Toast.LENGTH_SHORT).show()
+            }
+
         }
         return binding.root
     }
