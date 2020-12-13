@@ -15,7 +15,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B6B6B6"
+        android:background="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/txtWeightID"
         app:layout_constraintStart_toStartOf="@+id/txtWeightID"
         tools:context=".MainActivity">
@@ -54,35 +54,13 @@
         <!--        </ScrollView>-->
 
         <Button
-            android:id="@+id/btnAddCardio"
-            android:layout_width="108dp"
-            android:layout_height="49dp"
-            android:layout_marginEnd="152dp"
-            android:layout_marginBottom="108dp"
-            android:text="Add Cardio"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
             android:id="@+id/dltBtn"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="112dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="26dp"
+            android:background="#2196F3"
             android:text="Delete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <EditText
-            android:id="@+id/txtID"
-            android:layout_width="152dp"
-            android:layout_height="31dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="204dp"
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:hint="Enter Id"
-            android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -90,12 +68,36 @@
             android:id="@+id/textView4"
             android:layout_width="160dp"
             android:layout_height="25dp"
-            android:layout_marginEnd="208dp"
-            android:layout_marginBottom="208dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="26dp"
             android:text="Please Enter Id:"
             android:textAlignment="center"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddCardio"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnAddCardio"
+            android:layout_width="108dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="26dp"
+            android:background="#2196F3"
+            android:text="Add Cardio"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/txtID"
+            android:layout_width="152dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="26dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Enter Id"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/dltBtn"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView

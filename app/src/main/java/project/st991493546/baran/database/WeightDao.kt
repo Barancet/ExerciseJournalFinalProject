@@ -13,6 +13,7 @@ interface WeightDao {
 
     @Query("SELECT * from weight_table")
     suspend fun getAll(): WeightEntity?
+
     @Insert
     suspend fun insert(weight: WeightEntity)
 
@@ -23,14 +24,11 @@ interface WeightDao {
     suspend fun delete(key: Long)
 
 
-
     @Query("SELECT * FROM weight_table")
     fun getAllRecordsLiveData(): LiveData<List<WeightEntity>>
 
     @Query("SELECT * from weight_table WHERE id = :id")
-    suspend fun getOneRecord(id: Long) : WeightEntity
-
-
+    suspend fun getOneRecord(id: Long): WeightEntity
 
 
 }

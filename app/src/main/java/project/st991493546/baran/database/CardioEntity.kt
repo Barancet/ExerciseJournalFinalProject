@@ -13,18 +13,18 @@ import java.sql.Date
 
 data class CardioEntity(
 
-    @PrimaryKey(autoGenerate = true)
-     var id: Long,
+ @PrimaryKey(autoGenerate = true)
+ var id: Long,
 
-     @ColumnInfo(name = "date")
-     var date: String,
+ @ColumnInfo(name = "date")
+ var date: String,
 
-     @ColumnInfo(name = "cardioName")
-     var cardioName: String,
+ @ColumnInfo(name = "cardioName")
+ var cardioName: String,
 
-     @ColumnInfo(name = "duration")
-     var duration: Int,
+ @ColumnInfo(name = "duration")
+ var duration: Int,
 
-     @ColumnInfo(name = "distance")
-     var distance: Int
-): Parcelable
+ @ColumnInfo(name = "distance")
+ var distance: Int
+) : Parcelable

@@ -1,37 +1,34 @@
 package project.st991493546.baran.weight
 
 import android.app.Application
-import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import project.st991493546.baran.database.*
-import project.st991493546.baran.formatCardio
+import project.st991493546.baran.database.WeightDao
+import project.st991493546.baran.database.WeightEntity
 
-class WeightViewModel(private val weightDao: WeightDao, application: Application) : AndroidViewModel(application) {
+class WeightViewModel(private val weightDao: WeightDao, application: Application) :
+    AndroidViewModel(application) {
 
     var weightLiveData = MutableLiveData<WeightEntity?>()
 
+    val readAllData: LiveData<List<WeightEntity>> = weightDao.getAllRecordsLiveData()
 
-
-
-    val readAllData : LiveData<List<WeightEntity>> = weightDao.getAllRecordsLiveData()
-
-    suspend fun updateWeightCoroutine(weight : WeightEntity){
+    suspend fun updateWeightCoroutine(weight: WeightEntity) {
         weightDao.update(weight)
     }
 
-    fun updateWeight(weight : WeightEntity){
+    fun updateWeight(weight: WeightEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             updateWeightCoroutine(weight)
         }
     }
 
-
     var weight = weightDao.getAllRecordsLiveData()
-
-
 
     init {
         initializeWeightLiveData()
@@ -40,24 +37,21 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
     private fun initializeWeightLiveData() {
         viewModelScope.launch {
             weightLiveData.value = weightItems()
-
         }
     }
 
-
-
-    fun displayAll(){
+    fun displayAll() {
         viewModelScope.launch {
             weightLiveData.value = weightItems()
         }
     }
 
-    suspend fun weightItems() : WeightEntity? {
+    suspend fun weightItems(): WeightEntity? {
         var weightList = weightDao.getAll()
         return weightList
     }
 
-    fun insertIntoDB(name : String, date : String, reps : Int, sets: Int) {
+    fun insertIntoDB(name: String, date: String, reps: Int, sets: Int) {
         val weight = WeightEntity(
             0,
             weightType = name,
@@ -77,25 +71,22 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
             )
             insert(newWeight)
         }
-
-
     }
 
     private suspend fun insert(weight: WeightEntity) {
-        withContext(Dispatchers.IO){
+        withContext(Dispatchers.IO) {
             weightDao.insert(weight)
         }
-
     }
-    fun deleteById(id : Long) {
+
+    fun deleteById(id: Long) {
         viewModelScope.launch {
             deleteByIdSuspend(id)
             weightLiveData.value = weightItems()
         }
     }
 
-    //
-    private suspend fun deleteByIdSuspend(id : Long) {
+    private suspend fun deleteByIdSuspend(id: Long) {
         return withContext(Dispatchers.IO) {
             weightDao.delete(id)
         }

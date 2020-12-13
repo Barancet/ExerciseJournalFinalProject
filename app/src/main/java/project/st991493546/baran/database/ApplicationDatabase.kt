@@ -9,7 +9,6 @@ import androidx.room.Room.databaseBuilder
 @Database(entities = [CardioEntity::class, WeightEntity::class], version = 1)
 abstract class ApplicationDatabase : RoomDatabase() {
 
-    //changed to an abstract value like example... find same in view frag
     abstract fun cardioDao(): CardioDao
     abstract fun weightDao(): WeightDao
 

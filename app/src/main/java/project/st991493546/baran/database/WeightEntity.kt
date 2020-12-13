@@ -12,18 +12,19 @@ import java.sql.Date
 @Entity(tableName = "weight_table")
 
 data class WeightEntity
-    (@PrimaryKey(autoGenerate = true)
-     var id: Long,
+ (
+ @PrimaryKey(autoGenerate = true)
+ var id: Long,
 
-     @ColumnInfo(name = "date")
-     var date: String,
+ @ColumnInfo(name = "date")
+ var date: String,
 
-     @ColumnInfo(name = "weightType")
-     var weightType: String,
+ @ColumnInfo(name = "weightType")
+ var weightType: String,
 
-     @ColumnInfo(name = "reps")
-     var reps: Int,
+ @ColumnInfo(name = "reps")
+ var reps: Int,
 
-     @ColumnInfo(name = "sets")
-     var sets: Int
-): Parcelable
+ @ColumnInfo(name = "sets")
+ var sets: Int
+) : Parcelable

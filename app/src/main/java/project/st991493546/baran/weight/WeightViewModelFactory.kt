@@ -3,11 +3,12 @@ package project.st991493546.baran.weight
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import project.st991493546.baran.cardio.CardioViewModel
-import project.st991493546.baran.database.CardioDao
 import project.st991493546.baran.database.WeightDao
 
-class WeightViewModelFactory(private val dataSource: WeightDao, private val application: Application) : ViewModelProvider.Factory  {
+class WeightViewModelFactory(
+    private val dataSource: WeightDao,
+    private val application: Application
+) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WeightViewModel::class.java)) {
