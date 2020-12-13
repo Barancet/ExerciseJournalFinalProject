@@ -28,6 +28,7 @@ class Cardio : Fragment() {
         val cardioViewModelFactory = CardioViewModelFactory(dataSource, application)
         val cardioViewModel =
             ViewModelProvider(this, cardioViewModelFactory).get(CardioViewModel::class.java)
+
         val adapter = CardioViewAdapter()
         val recyclerview = view.recyclerView
 

@@ -14,7 +14,6 @@ import project.st991493546.baran.database.WeightEntity
 class WeightViewModel(private val weightDao: WeightDao, application: Application) :
     AndroidViewModel(application) {
 
-    var weightLiveData = MutableLiveData<WeightEntity?>()
 
     val readAllData: LiveData<List<WeightEntity>> = weightDao.getAllRecordsLiveData()
 
@@ -30,21 +29,6 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
 
     var weight = weightDao.getAllRecordsLiveData()
 
-    init {
-        initializeWeightLiveData()
-    }
-
-    private fun initializeWeightLiveData() {
-        viewModelScope.launch {
-            weightLiveData.value = weightItems()
-        }
-    }
-
-    fun displayAll() {
-        viewModelScope.launch {
-            weightLiveData.value = weightItems()
-        }
-    }
 
     suspend fun weightItems(): WeightEntity? {
         var weightList = weightDao.getAll()
@@ -82,7 +66,7 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
     fun deleteById(id: Long) {
         viewModelScope.launch {
             deleteByIdSuspend(id)
-            weightLiveData.value = weightItems()
+
         }
     }
 
