@@ -44,7 +44,7 @@ class CardioAdd : Fragment() {
                 var duration = binding.editTextDuration.text.toString().toInt()
                 cardioViewModel.insertIntoDB(name, date, duration, distance)
                 Toast.makeText(requireContext(), "Added Successfully", Toast.LENGTH_SHORT).show()
-                view.findNavController().navigate(R.id.action_cardioAdd_to_cardio)
+                //view.findNavController().navigate(R.id.action_cardioAdd_to_cardio)
             }
             else{
                 Toast.makeText(requireContext(), "Please enter all values", Toast.LENGTH_SHORT).show()

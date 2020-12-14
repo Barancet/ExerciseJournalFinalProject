@@ -55,7 +55,7 @@ class WeightEdit : Fragment() {
 
         binding.btnUpdateWeight.setOnClickListener {view:View ->
             updateWeight()
-            view.findNavController().navigate(R.id.action_weightEdit_to_weight)
+            //view.findNavController().navigate(R.id.action_weightEdit_to_weight)
         }
 
         binding.setLifecycleOwner(this)

@@ -1,12 +1,11 @@
 package project.st991493546.baran
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import project.st991493546.baran.databinding.FragmentTitleBinding
 
 class Title : Fragment() {
@@ -35,4 +34,6 @@ class Title : Fragment() {
         }
         return binding.root
     }
+
+
 }

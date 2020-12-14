@@ -46,7 +46,7 @@ class CardioEdit : Fragment() {
 
         binding.btnUpdateCardio.setOnClickListener {view:View ->
             updateCardio()
-            view.findNavController().navigate(R.id.action_cardioEdit_to_cardio)
+            //view.findNavController().navigate(R.id.action_cardioEdit_to_cardio)
         }
         binding.setLifecycleOwner(this)
         binding.cardioViewModel = cardioViewModel

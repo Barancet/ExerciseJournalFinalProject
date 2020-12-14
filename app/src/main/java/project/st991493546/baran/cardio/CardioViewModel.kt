@@ -51,21 +51,18 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
             insert(newCardio)
         }
     }
-
     private suspend fun insert(cardio: CardioEntity) {
         withContext(Dispatchers.IO) {
             cardioDao.insert(cardio)
             Log.i("Test", "($cardio)")
         }
     }
-
     fun deleteById(id: Long) {
         viewModelScope.launch {
             deleteByIdSuspend(id)
 
         }
     }
-
     private suspend fun deleteByIdSuspend(id: Long) {
         return withContext(Dispatchers.IO) {
             cardioDao.delete(id)

@@ -49,7 +49,7 @@ class WeightAdd : Fragment() {
                 var sets = binding.editTextSets.text.toString().toInt()
                 weightViewModel.insertIntoDB(name, date, reps, sets)
                 Toast.makeText(requireContext(), "Added Successfully", Toast.LENGTH_SHORT).show()
-                view.findNavController().navigate(R.id.action_weightAdd_to_weight)
+                //view.findNavController().navigate(R.id.action_weightAdd_to_weight)
             }
             else{
                 Toast.makeText(requireContext(), "Please enter all values", Toast.LENGTH_SHORT).show()

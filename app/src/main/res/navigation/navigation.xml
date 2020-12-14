@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_title" >
         <action
             android:id="@+id/action_title_to_cardio"
-            app:destination="@id/cardio" />
+            app:destination="@id/cardio"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_title_to_weight"
             app:destination="@id/weight" />
@@ -27,7 +28,8 @@
         tools:layout="@layout/fragment_cardio" >
         <action
             android:id="@+id/action_cardio_to_cardioAdd"
-            app:destination="@id/cardioAdd" />
+            app:destination="@id/cardioAdd"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_cardio_to_cardioEdit"
             app:destination="@id/cardioEdit" />
@@ -48,20 +50,12 @@
         android:id="@+id/weightAdd"
         android:name="project.st991493546.baran.weight.WeightAdd"
         android:label="fragment_weight_add"
-        tools:layout="@layout/fragment_weight_add" >
-        <action
-            android:id="@+id/action_weightAdd_to_weight"
-            app:destination="@id/weight" />
-    </fragment>
+        tools:layout="@layout/fragment_weight_add" />
     <fragment
         android:id="@+id/cardioAdd"
         android:name="project.st991493546.baran.cardio.CardioAdd"
         android:label="CardioAdd"
-        tools:layout="@layout/fragment_cardio_add">
-        <action
-            android:id="@+id/action_cardioAdd_to_cardio"
-            app:destination="@id/cardio" />
-    </fragment>
+        tools:layout="@layout/fragment_cardio_add"/>
     <fragment
         android:id="@+id/cardioEdit"
         android:name="project.st991493546.baran.cardio.CardioEdit"
@@ -70,9 +64,6 @@
         <argument
             android:name="currentCardio"
             app:argType="project.st991493546.baran.database.CardioEntity" />
-        <action
-            android:id="@+id/action_cardioEdit_to_cardio"
-            app:destination="@id/cardio" />
     </fragment>
     <fragment
         android:id="@+id/weightEdit"
@@ -82,9 +73,6 @@
         <argument
             android:name="currentWeight"
             app:argType="project.st991493546.baran.database.WeightEntity" />
-        <action
-            android:id="@+id/action_weightEdit_to_weight"
-            app:destination="@id/weight" />
     </fragment>
     <fragment
         android:id="@+id/about"
