@@ -1,5 +1,5 @@
 package project.st991493546.baran.weight
-
+// This class was done all by baran
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +16,6 @@ import project.st991493546.baran.databinding.FragmentWeightAddBinding
 
 class WeightAdd : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +23,7 @@ class WeightAdd : Fragment() {
     ): View? {
 
         (activity as MainActivity).supportActionBar?.title = "Add Weight"
+
 
         val binding = DataBindingUtil.inflate<FragmentWeightAddBinding>(
             inflater,

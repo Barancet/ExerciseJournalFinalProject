@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-
+//All done by Ebrahim
 @Dao
 interface CardioDao {
     @Query("SELECT * from cardio_table WHERE id = :key")

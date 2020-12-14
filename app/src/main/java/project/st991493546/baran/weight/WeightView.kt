@@ -13,6 +13,8 @@ class WeightView : RecyclerView.Adapter<WeightView.ViewHolder>() {
 
     private var weightList = emptyList<WeightEntity>()
 
+
+    //viewAdapter for recycler View was done by Alkesh with Ebrahim's contribution
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.weightitems, parent, false)
         return ViewHolder(view)
@@ -25,7 +27,7 @@ class WeightView : RecyclerView.Adapter<WeightView.ViewHolder>() {
         holder.view.txtDate.text = currentItem.date
         holder.view.txtReps.text = currentItem.reps.toString()
         holder.view.txtSets.text = currentItem.sets.toString()
-
+        //this part is for Edit Weight done by Ebrahim
         holder.view.relativeLayoutWeight.setOnClickListener {
             val action = WeightDirections.actionWeightToWeightEdit(currentItem)
             holder.view.findNavController().navigate(action)
@@ -36,6 +38,8 @@ class WeightView : RecyclerView.Adapter<WeightView.ViewHolder>() {
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 
+
+    //Function added by Alkesh
     fun setData(weight: List<WeightEntity>) {
         this.weightList = weight
         notifyDataSetChanged()

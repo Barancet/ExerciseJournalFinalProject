@@ -16,8 +16,11 @@ import project.st991493546.baran.database.CardioEntity
 class CardioViewModel(private val cardioDao: CardioDao, application: Application) :
     AndroidViewModel(application) {
 
+    // readAllData - done by Alkesh
     val readAllData: LiveData<List<CardioEntity>> = cardioDao.getAllRecordsLiveData()
 
+
+    // updateCardioCoroutine and updateCardio done by Ebrahim Zhalehsani
     fun updateCardio(cardio: CardioEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             updateCardioCoroutine(cardio)
@@ -27,9 +30,9 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
         cardioDao.update(cardio)
     }
 
-    var cardio = cardioDao.getAllRecordsLiveData()
 
 
+    // insertIntoDB and insert were done by Baran Cetin
     fun insertIntoDB(name: String, date: String, duration: Int, distance: Int) {
         val cardio = CardioEntity(
             0,
@@ -48,6 +51,9 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
             cardioDao.insert(cardio)
         }
     }
+
+
+    // deleteById and deleteByIdSuspend done by Alkesh Sandal
     fun deleteById(id: Long) {
         viewModelScope.launch {
             deleteByIdSuspend(id)

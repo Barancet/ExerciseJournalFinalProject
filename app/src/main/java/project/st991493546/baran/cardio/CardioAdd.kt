@@ -1,5 +1,5 @@
 package project.st991493546.baran.cardio
-
+// This class was done all by baran
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +15,8 @@ import project.st991493546.baran.database.ApplicationDatabase
 import project.st991493546.baran.databinding.FragmentCardioAddBinding
 
 class CardioAdd : Fragment() {
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

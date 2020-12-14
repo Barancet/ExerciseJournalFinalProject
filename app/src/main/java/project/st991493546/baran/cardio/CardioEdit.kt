@@ -1,5 +1,5 @@
 package project.st991493546.baran.cardio
-
+//this class was done all by Ebrahim
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +19,8 @@ import project.st991493546.baran.databinding.FragmentCardioEditBinding
 
 class CardioEdit : Fragment() {
 
+
+
     private val args by navArgs<CardioEditArgs>()
     private lateinit var cardioViewModel: CardioViewModel
 
@@ -26,6 +28,7 @@ class CardioEdit : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         (activity as MainActivity).supportActionBar?.title = "Edit Cardio"
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentCardioEditBinding>(

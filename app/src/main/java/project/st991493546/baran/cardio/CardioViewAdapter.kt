@@ -14,6 +14,8 @@ class CardioViewAdapter : RecyclerView.Adapter<CardioViewAdapter.ViewHolder>() {
 
     private var cardioList = emptyList<CardioEntity>()
 
+    //viewAdapter for recycler View was done by Alkesh with Ebrahim's contribution
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cardioitems, parent, false)
         return ViewHolder(view)
@@ -27,7 +29,7 @@ class CardioViewAdapter : RecyclerView.Adapter<CardioViewAdapter.ViewHolder>() {
         holder.view.txtDate.text = currentItem?.date
         holder.view.txtSets.text = currentItem?.distance.toString()
         holder.view.txtReps.text = currentItem?.duration.toString()
-
+        //this part is for Edit Cardio done by Ebrahim
         holder.view.relativeLayout.setOnClickListener {
             val action = CardioDirections.actionCardioToCardioEdit(currentItem)
             holder.view.findNavController().navigate(action)
@@ -38,6 +40,7 @@ class CardioViewAdapter : RecyclerView.Adapter<CardioViewAdapter.ViewHolder>() {
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 
+    //Function added by Alkesh
     fun setData(cardio: List<CardioEntity>) {
         this.cardioList = cardio
         notifyDataSetChanged()

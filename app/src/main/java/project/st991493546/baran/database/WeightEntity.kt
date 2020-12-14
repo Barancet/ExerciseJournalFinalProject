@@ -7,7 +7,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import java.sql.Date
-
+//all done by Ebrahim
 @Parcelize
 @Entity(tableName = "weight_table")
 

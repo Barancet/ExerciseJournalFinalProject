@@ -1,5 +1,5 @@
 package project.st991493546.baran.weight
-
+//Created by Everyone
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -31,6 +31,8 @@ class Cardio : Fragment() {
         val cardioViewModel =
             ViewModelProvider(this, cardioViewModelFactory).get(CardioViewModel::class.java)
 
+
+        //recyclerView was done by Alkesh with Ebrahim's contribution
         val adapter = CardioViewAdapter()
         val recyclerview = view.recyclerView
 
@@ -40,10 +42,11 @@ class Cardio : Fragment() {
             adapter.setData(cardio)
         })
 
+        // btnAddCardio done by Baran
         view.btnAddCardio.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_cardio_to_cardioAdd)
         }
-
+        // Done by Alkesh
         view.dltBtn.setOnClickListener {
             if(view.txtID.text.toString().trim() != ""){
                 var id = view.txtID.text.toString().toLong()

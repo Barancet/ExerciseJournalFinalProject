@@ -30,6 +30,7 @@ class Weight : Fragment() {
         val weightViewModel =
             ViewModelProvider(this, weightViewModelFactory).get(WeightViewModel::class.java)
 
+        //recyclerviewweight was done by Alkesh with Ebrahim's contribution
         val adapter = WeightView()
         val recyclerview = view.recyclerviewweight
         recyclerview.adapter = adapter
@@ -38,10 +39,12 @@ class Weight : Fragment() {
             adapter.setData(weight)
         })
 
+        // btnAddWeight done by Baran
         view.btnAdd.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_weight_to_weightAdd)
         }
 
+        // btnWeightDelete done by Alkesh
         view.btnWeightDelete.setOnClickListener {
             if(view.txtWeightID.text.toString().trim() != ""){
                 var id = view.txtWeightID.text.toString().toLong()

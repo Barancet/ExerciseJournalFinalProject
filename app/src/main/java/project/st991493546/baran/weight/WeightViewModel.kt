@@ -14,9 +14,11 @@ import project.st991493546.baran.database.WeightEntity
 class WeightViewModel(private val weightDao: WeightDao, application: Application) :
     AndroidViewModel(application) {
 
-
+    // readAllData - done by Alkesh
     val readAllData: LiveData<List<WeightEntity>> = weightDao.getAllRecordsLiveData()
 
+
+    // updateWeightCoroutine and updateWeight done by Ebrahim Zhalehsani
     suspend fun updateWeightCoroutine(weight: WeightEntity) {
         weightDao.update(weight)
     }
@@ -27,9 +29,9 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
         }
     }
 
-    var weight = weightDao.getAllRecordsLiveData()
 
 
+    // insertIntoDB and insert were done by Baran Cetin
     fun insertIntoDB(name: String, date: String, reps: Int, sets: Int) {
         val weight = WeightEntity(
             0,
@@ -50,6 +52,8 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
         }
     }
 
+
+    // deleteById and deleteByIdSuspend done by Alkesh Sandal
     fun deleteById(id: Long) {
         viewModelScope.launch {
             deleteByIdSuspend(id)

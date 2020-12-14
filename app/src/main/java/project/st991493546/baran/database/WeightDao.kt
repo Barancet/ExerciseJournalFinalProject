@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-
+//all done by Ebrahim
 @Dao
 interface WeightDao {
     @Query("SELECT * from weight_table WHERE id = :key")
