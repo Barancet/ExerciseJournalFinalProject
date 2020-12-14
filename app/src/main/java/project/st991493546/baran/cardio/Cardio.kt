@@ -23,6 +23,8 @@ class Cardio : Fragment() {
         (activity as MainActivity).supportActionBar?.title = "Cardio Journal"
 
         val view = inflater.inflate(R.layout.fragment_cardio, container, false)
+
+
         val application = requireNotNull(activity).application
         val dataSource = ApplicationDatabase.getInstance(application).cardioDao()
         val cardioViewModelFactory = CardioViewModelFactory(dataSource, application)

@@ -23,7 +23,6 @@ interface CardioDao {
     @Query("DELETE FROM cardio_table Where id = :key")
     suspend fun delete(key: Long)
 
-
     @Query("SELECT * FROM cardio_table")
     fun getAllRecordsLiveData(): LiveData<List<CardioEntity>>
 

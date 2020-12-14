@@ -102,14 +102,14 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="414dp"
-            android:layout_height="442dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/cardioitems" />
+        android:id="@+id/recyclerView"
+        android:layout_width="414dp"
+        android:layout_height="442dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/cardioitems" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

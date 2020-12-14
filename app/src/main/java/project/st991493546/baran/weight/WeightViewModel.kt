@@ -30,11 +30,6 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
     var weight = weightDao.getAllRecordsLiveData()
 
 
-    suspend fun weightItems(): WeightEntity? {
-        var weightList = weightDao.getAll()
-        return weightList
-    }
-
     fun insertIntoDB(name: String, date: String, reps: Int, sets: Int) {
         val weight = WeightEntity(
             0,
@@ -44,16 +39,8 @@ class WeightViewModel(private val weightDao: WeightDao, application: Application
             date = date
             //the date is Int. so get the value of text box which is date and format it. the number shoud be DDMMYYYY
         )
-
         viewModelScope.launch {
-            val newWeight = WeightEntity(
-                weight.id,
-                weight.date,
-                weight.weightType,
-                weight.reps,
-                weight.sets
-            )
-            insert(newWeight)
+            insert(weight)
         }
     }
 

@@ -39,22 +39,13 @@ class CardioViewModel(private val cardioDao: CardioDao, application: Application
             date = date
             //the date is Int. so get the value of text box which is date and format it. the number shoud be DDMMYYYY
         )
-
         viewModelScope.launch {
-            val newCardio = CardioEntity(
-                cardio.id,
-                cardio.date,
-                cardio.cardioName,
-                cardio.duration,
-                cardio.distance
-            )
-            insert(newCardio)
+            insert(cardio)
         }
     }
     private suspend fun insert(cardio: CardioEntity) {
         withContext(Dispatchers.IO) {
             cardioDao.insert(cardio)
-            Log.i("Test", "($cardio)")
         }
     }
     fun deleteById(id: Long) {
